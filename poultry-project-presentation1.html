@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sustainable Poultry Production Project - Beni Tadjit</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-navy: #1e3a5f;
+            --secondary-blue: #2c5f8d;
+            --accent-gold: #b8936d;
+            --light-blue: #e8f1f8;
+            --text-dark: #2d3748;
+            --text-light: #718096;
+            --white: #ffffff;
+            --border-color: #cbd5e0;
+            --shadow: rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Source Sans 3', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+            background: var(--white);
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Libre Baskerville', serif;
+            font-weight: 700;
+            color: var(--primary-navy);
+            line-height: 1.3;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 1s ease-out forwards;
+            opacity: 0;
+        }
+
+        .fade-in {
+            animation: fadeIn 1.2s ease-out forwards;
+            opacity: 0;
+        }
+
+        .slide-in-left {
+            animation: slideInLeft 1s ease-out forwards;
+            opacity: 0;
+        }
+
+        .slide-in-right {
+            animation: slideInRight 1s ease-out forwards;
+            opacity: 0;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--primary-navy) 0%, var(--secondary-blue) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.03) 0%, transparent 50%);
+        }
+
+        .hero-content {
+            text-align: center;
+            color: var(--white);
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+            animation-delay: 0.2s;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            animation-delay: 0.4s;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin-bottom: 2rem;
+            color: rgba(255, 255, 255, 0.9);
+            animation-delay: 0.6s;
+        }
+
+        .hero-description {
+            font-size: 1.125rem;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 3rem;
+            animation-delay: 0.8s;
+        }
+
+        .hero-cta {
+            display: inline-block;
+            padding: 1rem 3rem;
+            background: var(--accent-gold);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 1.125rem;
+            transition: all 0.3s ease;
+            animation-delay: 1s;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-cta:hover {
+            background: #a07d5a;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Section Divider */
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-color), transparent);
+            margin: 4rem auto;
+            max-width: 600px;
+        }
+
+        /* Project Overview Section */
+        .project-overview {
+            padding: 8rem 0;
+            background: var(--white);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-tag {
+            display: inline-block;
+            padding: 0.5rem 1.25rem;
+            background: var(--light-blue);
+            color: var(--secondary-blue);
+            font-size: 0.875rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: 2.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-description {
+            font-size: 1.25rem;
+            color: var(--text-light);
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .overview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .overview-card {
+            background: var(--white);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 2.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .overview-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px var(--shadow);
+            border-color: var(--secondary-blue);
+        }
+
+        .overview-card-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--light-blue);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.75rem;
+        }
+
+        .overview-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .overview-card p {
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        /* Image + Text Sections */
+        .image-text-section {
+            padding: 6rem 0;
+            background: var(--white);
+        }
+
+        .image-text-section:nth-child(even) {
+            background: var(--light-blue);
+        }
+
+        .image-text-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .image-text-content.reverse {
+            direction: rtl;
+        }
+
+        .image-text-content.reverse > * {
+            direction: ltr;
+        }
+
+        .image-wrapper {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 10px 40px var(--shadow);
+        }
+
+        .image-wrapper img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .image-wrapper:hover img {
+            transform: scale(1.05);
+        }
+
+        .text-content h2 {
+            font-size: 2.25rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .text-content p {
+            font-size: 1.125rem;
+            color: var(--text-light);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        /* Detailed Section */
+        .detailed-section {
+            padding: 8rem 0;
+            background: linear-gradient(to bottom, var(--white) 0%, var(--light-blue) 100%);
+        }
+
+        .detail-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .detail-card {
+            background: var(--white);
+            border-radius: 8px;
+            padding: 2.5rem;
+            box-shadow: 0 4px 20px var(--shadow);
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--accent-gold);
+        }
+
+        .detail-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .detail-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.25rem;
+            color: var(--secondary-blue);
+        }
+
+        .detail-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .detail-card li {
+            padding: 0.75rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--text-light);
+        }
+
+        .detail-card li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent-gold);
+            font-weight: bold;
+        }
+
+        /* Table Section */
+        .table-section {
+            padding: 8rem 0;
+            background: var(--white);
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+            margin-top: 3rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px var(--shadow);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--white);
+        }
+
+        thead {
+            background: var(--primary-navy);
+            color: var(--white);
+        }
+
+        th, td {
+            padding: 1.25rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        th {
+            font-weight: 600;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        tbody tr {
+            transition: background 0.2s ease;
+        }
+
+        tbody tr:hover {
+            background: var(--light-blue);
+        }
+
+        tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .subtotal-row {
+            background: var(--light-blue);
+            font-weight: 600;
+        }
+
+        .total-row {
+            background: var(--primary-navy);
+            color: var(--white);
+            font-weight: 700;
+            font-size: 1.125rem;
+        }
+
+        .total-row td {
+            border-bottom: none;
+        }
+
+        /* Closing Section */
+        .closing-section {
+            padding: 8rem 0;
+            background: linear-gradient(135deg, var(--primary-navy) 0%, var(--secondary-blue) 100%);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .closing-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .closing-content h2 {
+            font-size: 2.5rem;
+            color: var(--white);
+            margin-bottom: 2rem;
+        }
+
+        .closing-content p {
+            font-size: 1.25rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .contact-info {
+            margin-top: 4rem;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-info h3 {
+            color: var(--white);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            font-size: 1.125rem;
+        }
+
+        .contact-details p {
+            margin: 0;
+            font-size: 1.125rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 968px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.25rem;
+            }
+
+            .section-title {
+                font-size: 2.25rem;
+            }
+
+            .image-text-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .image-text-content.reverse {
+                direction: ltr;
+            }
+
+            .detail-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .overview-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .container {
+                padding: 0 1.5rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.125rem;
+            }
+
+            .section-title {
+                font-size: 1.875rem;
+            }
+
+            .project-overview,
+            .detailed-section,
+            .table-section,
+            .closing-section {
+                padding: 4rem 0;
+            }
+
+            .image-text-section {
+                padding: 4rem 0;
+            }
+
+            th, td {
+                padding: 1rem 0.75rem;
+                font-size: 0.875rem;
+            }
+        }
+
+        /* Scroll Progress Bar */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: var(--accent-gold);
+            z-index: 9999;
+            transition: width 0.1s ease;
+        }
+    </style>
+</head>
+<body>
+    <!-- Progress Bar -->
+    <div class="progress-bar" id="progressBar"></div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge fade-in-up">Official Project Submission</div>
+                <h1 class="fade-in-up">Sustainable Poultry Production Initiative</h1>
+                <p class="hero-subtitle fade-in-up">Beni Tadjit, Morocco</p>
+                <p class="hero-description fade-in-up">
+                    A formal proposal to the Ministry of Interior and Local Municipality for institutional support in establishing a sustainable agricultural enterprise focused on high-quality egg and chicken meat production, serving regional communities while promoting food security, environmental responsibility, and local economic development.
+                </p>
+                <a href="#overview" class="hero-cta fade-in-up">View Project Details</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Overview Section -->
+    <section class="project-overview" id="overview">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Project Synopsis</span>
+                <h2 class="section-title">Executive Summary</h2>
+                <p class="section-description">
+                    This initiative addresses critical regional needs for sustainable food production through a professionally managed poultry operation that ensures consistent supply of high-quality eggs and chicken meat while maintaining strict standards for animal welfare, environmental sustainability, and food safety.
+                </p>
+            </div>
+
+            <div class="overview-grid">
+                <div class="overview-card reveal">
+                    <div class="overview-card-icon">🎯</div>
+                    <h3>Project Objective</h3>
+                    <p>Establish a reliable source of protein production through sustainable poultry farming, providing consistent supply of eggs and chicken meat to regional markets while adhering to international quality and safety standards.</p>
+                </div>
+
+                <div class="overview-card reveal">
+                    <div class="overview-card-icon">🌱</div>
+                    <h3>Target Sector</h3>
+                    <p>Agricultural development with focus on sustainable animal husbandry, addressing food security needs and supporting regional agricultural diversification initiatives aligned with national development goals.</p>
+                </div>
+
+                <div class="overview-card reveal">
+                    <div class="overview-card-icon">⚠️</div>
+                    <h3>Identified Problem</h3>
+                    <p>Limited local availability of high-quality poultry products, dependency on external suppliers, lack of modern sustainable farming infrastructure, and insufficient employment opportunities in the agricultural sector.</p>
+                </div>
+
+                <div class="overview-card reveal">
+                    <div class="overview-card-icon">✓</div>
+                    <h3>Proposed Solution</h3>
+                    <p>Implementation of a professionally managed poultry farm utilizing modern sustainable practices, creating local employment, ensuring food safety compliance, and establishing reliable distribution networks to serve neighboring communities.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="section-divider"></div>
+    </div>
+
+    <!-- Strategic Vision Section -->
+    <section class="image-text-section">
+        <div class="container">
+            <div class="image-text-content reveal">
+                <div class="image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?w=800&h=500&fit=crop" alt="Strategic Vision - Modern poultry farming infrastructure">
+                </div>
+                <div class="text-content">
+                    <h2>Strategic Vision</h2>
+                    <p>
+                        Our strategic approach centers on establishing Beni Tadjit as a model for sustainable agricultural development in the region. By implementing modern poultry farming methodologies combined with traditional values of quality and community service, we aim to create a replicable framework for rural economic development.
+                    </p>
+                    <p>
+                        The project embodies a long-term commitment to food security, environmental stewardship, and socio-economic advancement. Through strategic partnerships with governmental institutions and adherence to regulatory frameworks, we will establish standards for excellence in agricultural production that benefit the entire region.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Implementation Plan Section -->
+    <section class="image-text-section">
+        <div class="container">
+            <div class="image-text-content reverse reveal">
+                <div class="image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1560493676-04071c5f467b?w=800&h=500&fit=crop" alt="Implementation Plan - Structured development phases">
+                </div>
+                <div class="text-content">
+                    <h2>Implementation Plan</h2>
+                    <p>
+                        The project follows a structured, phased implementation strategy designed to ensure systematic development and risk mitigation. Phase One focuses on land acquisition, infrastructure development, and regulatory compliance. This includes securing government land lease, constructing purpose-built poultry housing, and establishing operational systems.
+                    </p>
+                    <p>
+                        Subsequent phases involve flock acquisition, staff recruitment and training, market development, and gradual scaling of operations. Each phase includes specific milestones, quality checkpoints, and performance metrics to ensure alignment with project objectives and governmental expectations for responsible agricultural development.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expected Impact Section -->
+    <section class="image-text-section">
+        <div class="container">
+            <div class="image-text-content reveal">
+                <div class="image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=800&h=500&fit=crop" alt="Expected Impact - Community and economic development">
+                </div>
+                <div class="text-content">
+                    <h2>Expected Impact</h2>
+                    <p>
+                        The project will generate significant multi-dimensional impact across economic, social, and environmental domains. Economically, it will create direct employment opportunities for local residents, stimulate regional commerce through supply chain development, and contribute to municipal revenue through productive use of public land assets.
+                    </p>
+                    <p>
+                        Socially, the initiative addresses food security concerns by establishing reliable access to affordable, high-quality protein sources. Environmentally, implementation of sustainable farming practices will demonstrate responsible land stewardship, waste management, and resource conservation, setting precedents for future agricultural development in the region.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sustainability Section -->
+    <section class="image-text-section">
+        <div class="container">
+            <div class="image-text-content reverse reveal">
+                <div class="image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=800&h=500&fit=crop" alt="Sustainability - Long-term development framework">
+                </div>
+                <div class="text-content">
+                    <h2>Sustainability & Future Development</h2>
+                    <p>
+                        Long-term sustainability is ensured through diversified revenue streams, prudent financial management, and continuous operational improvement. The business model incorporates market analysis, cost optimization, and scalability provisions to ensure viability beyond initial governmental support period.
+                    </p>
+                    <p>
+                        Future development pathways include potential expansion of production capacity, integration of complementary agricultural activities, technology adoption for efficiency improvements, and development of value-added products. The project is designed to evolve with market demands while maintaining its core commitment to quality, sustainability, and community benefit.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Detailed In-Depth Section -->
+    <section class="detailed-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Comprehensive Analysis</span>
+                <h2 class="section-title">Project Framework & Methodology</h2>
+                <p class="section-description">
+                    A detailed examination of operational frameworks, governance structures, and strategic alignment with national agricultural development objectives.
+                </p>
+            </div>
+
+            <div class="detail-cards">
+                <div class="detail-card reveal">
+                    <h3>Long-Term Vision</h3>
+                    <ul>
+                        <li>Establish regional leadership in sustainable poultry production within 3-5 years</li>
+                        <li>Achieve production capacity of 500+ laying hens with expansion potential</li>
+                        <li>Develop reputation for premium quality products and ethical farming practices</li>
+                        <li>Create model operation demonstrating viability of small-scale sustainable agriculture</li>
+                        <li>Contribute to regional food security and agricultural sector diversification</li>
+                    </ul>
+                </div>
+
+                <div class="detail-card reveal">
+                    <h3>Measurable Objectives</h3>
+                    <ul>
+                        <li>Achieve 80% production efficiency within first operational year</li>
+                        <li>Supply minimum 300 eggs daily to regional distribution network</li>
+                        <li>Generate 4-6 permanent employment positions for local residents</li>
+                        <li>Maintain 100% compliance with veterinary and food safety regulations</li>
+                        <li>Achieve financial break-even within 18-24 months of operations</li>
+                    </ul>
+                </div>
+
+                <div class="detail-card reveal">
+                    <h3>Operational Methodology</h3>
+                    <ul>
+                        <li>Implementation of biosecurity protocols and disease prevention systems</li>
+                        <li>Adoption of animal welfare standards meeting international guidelines</li>
+                        <li>Integration of environmental management practices for waste and resource use</li>
+                        <li>Establishment of quality control procedures for all production stages</li>
+                        <li>Development of efficient logistics for product collection and distribution</li>
+                    </ul>
+                </div>
+
+                <div class="detail-card reveal">
+                    <h3>Governance Framework</h3>
+                    <ul>
+                        <li>Formal registration and licensing with appropriate governmental authorities</li>
+                        <li>Regular reporting to Ministry of Interior and municipal oversight bodies</li>
+                        <li>Compliance with agricultural regulations and veterinary inspection requirements</li>
+                        <li>Transparent financial management and record-keeping systems</li>
+                        <li>Engagement with local community stakeholders and agricultural cooperatives</li>
+                    </ul>
+                </div>
+
+                <div class="detail-card reveal">
+                    <h3>Socio-Economic Impact</h3>
+                    <ul>
+                        <li>Direct employment creation supporting 4-6 household incomes</li>
+                        <li>Indirect employment through supply chain and service provider engagement</li>
+                        <li>Enhanced local food security through reliable protein availability</li>
+                        <li>Stimulus to regional economy through commercial transactions</li>
+                        <li>Skills development and agricultural knowledge transfer to local workforce</li>
+                    </ul>
+                </div>
+
+                <div class="detail-card reveal">
+                    <h3>Policy Alignment</h3>
+                    <ul>
+                        <li>Supports national agricultural modernization and food security objectives</li>
+                        <li>Aligns with rural development and poverty reduction strategies</li>
+                        <li>Contributes to environmental sustainability and climate resilience goals</li>
+                        <li>Advances local economic development and employment generation priorities</li>
+                        <li>Demonstrates effective public-private collaboration in agricultural sector</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Table Section -->
+    <section class="table-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Financial Documentation</span>
+                <h2 class="section-title">Project Budget Breakdown</h2>
+                <p class="section-description">
+                    Comprehensive financial requirements for project establishment, detailing all capital investments, operational inputs, and infrastructure development costs necessary for successful implementation.
+                </p>
+            </div>
+
+            <div class="table-wrapper reveal">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Category</th>
+                            <th>Item</th>
+                            <th>Quantity / Notes</th>
+                            <th>Estimated Cost (MAD)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td rowspan="4"><strong>Land & Basic Infrastructure</strong></td>
+                            <td>Land rental from government (1 year)</td>
+                            <td>1 hectare</td>
+                            <td>5,000</td>
+                        </tr>
+                        <tr>
+                            <td>Administrative fees</td>
+                            <td>Permits & licenses</td>
+                            <td>2,000</td>
+                        </tr>
+                        <tr>
+                            <td>Simple chicken house (200 m²)</td>
+                            <td>Metal structure + sheets</td>
+                            <td>40,000</td>
+                        </tr>
+                        <tr>
+                            <td>Simple fencing & protection</td>
+                            <td>Perimeter security</td>
+                            <td>8,000</td>
+                        </tr>
+                        <tr class="subtotal-row">
+                            <td colspan="3"><strong>Subtotal: Land & Infrastructure</strong></td>
+                            <td><strong>55,000</strong></td>
+                        </tr>
+                        <tr>
+                            <td rowspan="4"><strong>Equipment & Tools</strong></td>
+                            <td>Manual feeders & drinkers</td>
+                            <td>Complete systems</td>
+                            <td>8,000</td>
+                        </tr>
+                        <tr>
+                            <td>Simple ventilation system</td>
+                            <td>Air circulation</td>
+                            <td>5,000</td>
+                        </tr>
+                        <tr>
+                            <td>Cleaning & disinfecting tools</td>
+                            <td>Hygiene equipment</td>
+                            <td>2,000</td>
+                        </tr>
+                        <tr>
+                            <td>Egg packaging boxes</td>
+                            <td>Initial inventory</td>
+                            <td>2,000</td>
+                        </tr>
+                        <tr class="subtotal-row">
+                            <td colspan="3"><strong>Subtotal: Equipment</strong></td>
+                            <td><strong>17,000</strong></td>
+                        </tr>
+                        <tr>
+                            <td rowspan="4"><strong>Flock & Initial Operations</strong></td>
+                            <td>Laying chicks</td>
+                            <td>500 birds</td>
+                            <td>7,500</td>
+                        </tr>
+                        <tr>
+                            <td>Feed for 3 months</td>
+                            <td>Initial supply</td>
+                            <td>15,000</td>
+                        </tr>
+                        <tr>
+                            <td>Vaccines & medications</td>
+                            <td>Health program</td>
+                            <td>3,000</td>
+                        </tr>
+                        <tr>
+                            <td>Utilities (water/electricity)</td>
+                            <td>3-month provision</td>
+                            <td>2,500</td>
+                        </tr>
+                        <tr class="subtotal-row">
+                            <td colspan="3"><strong>Subtotal: Flock & Operations</strong></td>
+                            <td><strong>28,000</strong></td>
+                        </tr>
+                        <tr class="total-row">
+                            <td colspan="3"><strong>TOTAL PROJECT BUDGET</strong></td>
+                            <td><strong>100,000 MAD</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Closing Section -->
+    <section class="closing-section">
+        <div class="container">
+            <div class="closing-content">
+                <h2 class="reveal">Formal Request for Institutional Support</h2>
+                <p class="reveal">
+                    The residents of Beni Tadjit respectfully submit this proposal to the Ministry of Interior and the Local Municipality, requesting institutional support for the establishment of this sustainable poultry production initiative. This project represents a commitment to responsible agricultural development, community welfare, and regional economic advancement.
+                </p>
+                <p class="reveal">
+                    We seek governmental assistance through provision of suitable land resources, facilitation of necessary permits and licenses, and guidance in adhering to regulatory frameworks governing agricultural operations. This partnership will demonstrate effective collaboration between government institutions and local communities in advancing shared objectives of food security, environmental sustainability, and economic development.
+                </p>
+                <p class="reveal">
+                    The proposed initiative aligns with national priorities for agricultural modernization and rural development. With governmental support, this project will serve as a model for sustainable small-scale farming, creating employment, strengthening food systems, and contributing to the prosperity of Beni Tadjit and surrounding regions.
+                </p>
+
+                <div class="contact-info reveal">
+                    <h3>Project Contact Information</h3>
+                    <div class="contact-details">
+                        <p><strong>Location:</strong> Beni Tadjit, Morocco</p>
+                        <p><strong>Applicant:</strong> Community Representatives, Beni Tadjit</p>
+                        <p><strong>Addressed To:</strong> Ministry of Interior & Local Municipality</p>
+                        <p><strong>Project Type:</strong> Agricultural Development - Sustainable Poultry Production</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Scroll Progress Bar
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('progressBar').style.width = scrolled + '%';
+        });
+
+        // Reveal on Scroll Animation
+        const revealElements = document.querySelectorAll('.reveal');
+        
+        const revealOnScroll = () => {
+            const windowHeight = window.innerHeight;
+            const revealPoint = 100;
+
+            revealElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+
+                if (elementTop < windowHeight - revealPoint) {
+                    element.classList.add('active');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', revealOnScroll);
+        revealOnScroll(); // Initial check on load
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
